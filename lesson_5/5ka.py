@@ -6,16 +6,17 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-s = Service('./chromedriver')
+s = Service("./chromedriver")
 chrome_options = Options()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
+chrome_options.add_argument("start-maximized")
 
 driver = webdriver.Chrome(service=s, options=chrome_options)
 # driver.implicitly_wait(10)
 
-driver.get('https://5ka.ru/special_offers')
+driver.get("https://5ka.ru/special_offers")
 
-button = driver.find_element(By.XPATH, "//span[contains(text(),'РџСЂРёРЅСЏС‚СЊ')]")
+button = driver.find_element(By.XPATH, "//span[contains(text(),'Принять')]")
 button.click()
 
 while True:
@@ -26,6 +27,6 @@ while True:
     # TODO exit from while True
 
 
-elems = driver.find_elements(By.CLASS_NAME, 'product-card item')
+elems = driver.find_elements(By.CLASS_NAME, "product-card item")
 for elem in elems:
     pass
